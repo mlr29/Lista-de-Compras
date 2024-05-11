@@ -5,17 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <form action="http://localhost:3000/lista" method="post">
+    <form id="form">
         <h1>Cadastro na Lista</h1>
         <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome">
         <label for="quantidade">quantidade</label>
         <input type="number" name="quantidade" id="quantidade">
-        <input type="submit">
+        <button id="submit-button">Adicionar Item</button>
     </form>
+
+    <ul id="item-list">
+    </ul>
+    
+    <button id="bt-verlista">Ver Lista</button>
+    <script src="script.js"></script>
 </body>
 
 </html>
