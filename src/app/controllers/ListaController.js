@@ -31,7 +31,7 @@ class ListaController {
 
     show(req, res) {
         const id = req.params.id;
-        const sql = 'SELECT * FROM `lista`.`items` where iditems=?'
+        const sql = 'SELECT * FROM `lista`.`items` where nome=?'
         conexao.query(sql, id, (error, result) => {
             if (error) {
                 console.log(error)
@@ -46,7 +46,7 @@ class ListaController {
     update(req, res) {
         const id = req.params.id;
         const lista = req.body;
-        const sql = 'UPDATE `lista`.`items` SET ? WHERE iditems = ?;'
+        const sql = 'UPDATE `lista`.`items` SET ? WHERE nome = ?;'
         conexao.query(sql, [lista, id], (error, result) => {
             if (error) {
                 console.log(error)
@@ -59,7 +59,7 @@ class ListaController {
 
     delete(req, res) {
         const id = req.params.id;
-        const sql = 'DELETE FROM `lista`.`items` where iditems=?'
+        const sql = 'DELETE FROM `lista`.`items` where nome = ?'
         conexao.query(sql, id, (error, result) => {
             if (error) {
                 console.log(error)
