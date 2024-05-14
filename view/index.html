@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de Compra</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <form action="http://localhost:3000/lista" method="post">
-        <h1>Cadastro na Lista</h1>
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome">
-        <label for="quantidade">quantidade</label>
-        <input type="number" name="quantidade" id="quantidade">
-        <input type="submit">
-    </form>
+    <section class="home" id="home">
+        <h1 class="title">Lista de Compras</h1>
+        <button class="bt" id="bt-add-item" onclick="window.location = 'adicionar-item.html'">Adicionar Item</button>
+        <button class="bt" id="bt-get-list" onclick="window.location = 'ver-lista.html'">Ver Lista</button>
+        <button class="bt" id="bt-exit">Sair</button>
+        <h1 class="title msg-exit" id="title-exit">Programa finalizado</h2>
+    </section>
+    <script src="script.js"></script>
 </body>
 
 </html>
