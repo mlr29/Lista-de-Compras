@@ -6,16 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
-    
-    
-    <ul id="item-list" class="item-list">
-    </ul>
+<body>    
+
+    <h1 class="title">Lista</h1>
+    <div class="list">
+        <div class="header">
+            <div class="header-name">Nome</div>
+            <div class="header-quantify">Quantidade</div>
+        </div>
+        <ul id="item-list" class="item-list">
+        </ul>
+    </div>
+
     <button class="bt" id="bt-excluiritem">Excluir Item</button>
     <button class="bt" id="bt-voltar" onclick="window.location = 'index.html'">Voltar</button>
-    
+
+    <div class="msg-sucess closed" id="msg-sucess">
+        <i class="fa-regular fa-x fa-xs icon-X" style="color: #FFF;" id="close-button"></i>
+        <div class="text" id="text">Item X removido com sucesso!</div>
+    </div>
     <script src="script.js"></script>
 </body>
 

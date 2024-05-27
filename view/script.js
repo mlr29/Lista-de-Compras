@@ -26,11 +26,20 @@ if (window.location.pathname == "/view/adicionar-item.html") { //Se estiver em a
     const enviarItem = async (event) => {
         event.preventDefault()
 
-        const form = document.getElementById("form")
+        const inputs = document.getElementsByTagName("input")
+        const sucessMessage = document.getElementById("msg-sucess")
+        const messageCloseButton = document.getElementById("close-button")
+        const textMessage = document.getElementById("text")
 
-        const nome = form.children[2].value; // Nome do item
-        const quantidade = form.children[4].value; // Quantidade do item
+        messageCloseButton.addEventListener("click", () => {
+            sucessMessage.classList = "msg-sucess closed"
+        }
+        )
+
+        const nome = inputs[0].value; // Nome do item
+        const quantidade = inputs[1].value; // Quantidade do item
         console.log(nome, quantidade)
+
         try {
             const response = await fetch('http://localhost:3000/lista', {
                 method: 'POST',
@@ -45,6 +54,8 @@ if (window.location.pathname == "/view/adicionar-item.html") { //Se estiver em a
             }
 
             console.log('Item adicionado com sucesso!');
+            textMessage.textContent = `Item ${nome} adicionado com sucesso!`
+            sucessMessage.classList = "msg-sucess"
         } catch (error) {
             console.error('Erro ao adicionar item:', error);
         }
@@ -54,7 +65,6 @@ if (window.location.pathname == "/view/adicionar-item.html") { //Se estiver em a
 }
 
 if (window.location.pathname == "/view/ver-lista.html") { //Se estiver em ver-lista.html
-
     const deleteButton = document.getElementById("bt-excluiritem")
     const itemList = document.getElementById('item-list')
 
@@ -75,15 +85,15 @@ if (window.location.pathname == "/view/ver-lista.html") { //Se estiver em ver-li
             // Itera pelos itens e adiciona à lista
             data.forEach(item => {
                 const li = document.createElement('li');
-                li.textContent = `${item.nome} (Quantidade: ${item.quantidade})`; // Suponha que o item tenha um campo "nome"
+                li.innerHTML = `<div class="value-list">${item.nome}</div>  <div class="value-list">${item.quantidade}</div>`; // Suponha que o item tenha um campo "nome"
                 li.id = `${item.nome}`
                 li.className = "item"
-                li.onclick = (event) => {
+                li.onclick = () => {
                     const liElements = document.querySelectorAll("li")
                     liElements.forEach((element) => {
                         element.className = "item"
                     })
-                    event.target.className = "item checked"
+                    li.className = "item checked"
                     console.log(li)
                 }
                 itemList.appendChild(li);
@@ -98,8 +108,15 @@ if (window.location.pathname == "/view/ver-lista.html") { //Se estiver em ver-li
         event.preventDefault()
 
         let idDeleteItem
-
+        const messageCloseButton = document.getElementById("close-button")
+        const sucessMessage = document.getElementById("msg-sucess")
         const liElements = document.querySelectorAll("li")
+        const textMessage = document.getElementById("text")
+
+        messageCloseButton.addEventListener("click", () => {
+            sucessMessage.classList = "msg-sucess closed"
+        }
+        )
 
         liElements.forEach((element) => {
             if (element.className == "item checked") {
@@ -121,6 +138,8 @@ if (window.location.pathname == "/view/ver-lista.html") { //Se estiver em ver-li
 
             console.log('Item deletado com sucesso!');
             exibirLista(event)
+            textMessage.textContent = `Item ${idDeleteItem} removido com sucesso!`
+            sucessMessage.classList = "msg-sucess"
         } catch (error) {
             console.error('Erro ao deletar item:', error);
         }
